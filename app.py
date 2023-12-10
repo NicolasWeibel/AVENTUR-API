@@ -32,7 +32,7 @@ class Paquete(db.Model):  # la clase paquete hereda de db.Model
     seguro = db.Column(db.Boolean, default=True)
     traslado = db.Column(db.Boolean, default=True)
     alquiler_auto = db.Column(db.Boolean, default=True)
-    precio_actual = db.Column(db.Integer, default=0)
+    precio = db.Column(db.Integer, default=0)
     stock = db.Column(db.Integer, default=0)
     imagen = db.Column(db.String(400))
 
@@ -50,7 +50,7 @@ class Paquete(db.Model):  # la clase paquete hereda de db.Model
         seguro,
         traslado,
         alquiler_auto,
-        precio_actual,
+        precio,
         stock,
         imagen,
     ):  # crea el  constructor de la clase
@@ -66,7 +66,7 @@ class Paquete(db.Model):  # la clase paquete hereda de db.Model
         self.seguro = seguro
         self.traslado = traslado
         self.alquiler_auto = alquiler_auto
-        self.precio_actual = precio_actual
+        self.precio = precio
         self.stock = stock
         self.imagen = imagen
 
@@ -94,7 +94,7 @@ class PaqueteSchema(ma.Schema):
             "seguro",
             "traslado",
             "alquiler_auto",
-            "precio_actual",
+            "precio",
             "stock",
             "imagen",
         )
@@ -151,7 +151,7 @@ def create_paquete():
     seguro = request.json["seguro"]
     traslado = request.json["traslado"]
     alquiler_auto = request.json["alquiler_auto"]
-    precio_actual = request.json["precio_actual"]
+    precio = request.json["precio"]
     stock = request.json["stock"]
     imagen = request.json["imagen"]
 
@@ -168,7 +168,7 @@ def create_paquete():
         seguro,
         traslado,
         alquiler_auto,
-        precio_actual,
+        precio,
         stock,
         imagen,
     )
@@ -194,7 +194,7 @@ def update_paquete(id):
     paquete.seguro = request.json["seguro"]
     paquete.traslado = request.json["traslado"]
     paquete.alquiler_auto = request.json["alquiler_auto"]
-    paquete.precio_actual = request.json["precio_actual"]
+    paquete.precio = request.json["precio"]
     paquete.stock = request.json["stock"]
     paquete.imagen = request.json["imagen"]
 
